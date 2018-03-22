@@ -1,0 +1,100 @@
+.row{
+	padding: 0px;
+	margin: 0px;
+	margin-top: 20px;
+}
+.photo{
+	height: 120px;
+}
+.col-md-2{
+	background: #f4ffea;
+	margin-top: 50px;
+}
+#touxiang img{	
+	height: 150px;
+}
+.col-md-10{
+	font-size: 0px;
+	padding-right: 0px;
+    padding-left: 0px;
+    width: 950px;
+    margin-left: 50px;
+}
+.containTitle{
+    font-size: 24px;
+    line-height: 50px;
+    width: 100%;
+    text-align: center;
+    color: #d86243;
+    border: 1px dashed #874343;
+    margin-top: 10px;
+}
+.photo{
+	border: #E5E5E5 5px solid;
+	border-radius: 100%;
+}
+.upBotton{
+	display: inline-block;
+	width: 50%;
+	background: #5bcc24;
+	line-height: 30px;
+	text-align: center;
+	margin-top:20px ;
+	color: #fff;
+}
+.upfile{
+	opacity: 0;
+	width: 50%;
+	height: 30px;
+	position: absolute;
+	top: 140px;
+	left: 57px;
+}
+  
+.tb-footer-bd{
+	margin-top: 100px;
+}
+.tb-footer-bd span{
+	margin-right: 20px;
+}
+.form-inline{
+	display: inline-block;
+	width:49%;
+	margin-bottom: 20px;
+	
+}
+.form-inline .form-control{
+	width: 80%;
+	position:static;
+	text-align: left;
+}
+input.btn{
+	width:25%;
+	margin-left: 37%;
+	color: #fff;
+    background-color: #6669c5;
+    border-color: #6669c5;
+}
+button.btn:hover{
+	background-color: #6669c5;
+	 border-color: #6669c5;
+}
+.form-inline lable{
+	width: 16%;
+    display: inline-block;
+    text-align-last: justify;
+}
+.itemTltie{
+	width: 100%;
+    text-align: center;
+    line-height: 50px;
+    font-size: 18px;
+    color: #ad2e2e;
+}
+.hint{
+	 width: 372px !important;
+	position: absolute;
+    color: red;
+    text-align: center;
+}
+    

@@ -1,0 +1,260 @@
+@charset "utf-8";
+*{
+	margin: 0;
+	padding: 0;
+}
+.header{
+	height: 58px;
+	background:skyblue;
+}
+.inner_c{
+	width: 1300px;
+	margin: 0 auto;
+	
+}
+.header .logo{
+	float: left;
+	margin-right:40px;
+			}
+.nav{
+	float: right;
+}
+.header .nav ul{
+	list-style: none;
+}
+.header .nav ul li{
+	float: left;
+	width: 100px;
+	line-height: 58px;
+	text-align: center;
+	cursor: pointer;
+}
+.header .nav ul li a{
+	display: block;
+	height: 58px;
+	color: black;
+	text-decoration: none;
+			}
+.header .nav ul li a:hover{
+	color:white;
+	background: #252947;
+}
+.content{
+	margin-top: 30px;
+	display: none;
+}
+.show{
+	display: table;
+}
+.content_left{
+	float: left;
+	width: 200px;
+	height:700px;
+	background:skyblue;
+}
+.content_left p{
+	height: 30px;
+}
+.content_left  h3{
+	color: black;
+	text-align: center;
+	font-size: 20px;
+}
+.content_left ul{
+	list-style: none;
+}
+.content_left ul li{
+	font-size: 14px;
+	height: 58px;
+	line-height:58px;
+	text-align: center;
+	border-top: 1px solid white;
+	cursor: pointer;
+}
+.content_left ul li.last{
+	border-bottom: 1px solid white;
+}
+.content_left ul li a{
+	display: block;
+	height: 58px;
+	color: black;
+	text-decoration: none;
+	font-size: 16px;
+}
+.content_left ul li a:hover{
+	color:white ;
+	background:  #252947;
+}
+.content_right{
+	width:1090px;
+	height: 800px;
+	float: left;
+	margin-left: 10px;
+}
+.content_right_header{
+	width: 100%;
+	height:40px;
+	background:whitesmoke;
+	border-bottom: 1px solid gainsboro;
+}
+.content_right_innerl{
+	width: 300px;
+    line-height: 40px;
+    padding-left: 25px;
+    font-weight: bold;
+    float: left;
+    font-size: 18px;
+    color: #333333;
+}
+.content_right_innerr{
+	width: 300px;
+	float: right;	
+}
+.content_right_innerr ul{
+	list-style: none;
+	display: table;
+}
+.content_right_innerr ul li{
+	width:70px;
+	float: left;
+	line-height:39px;
+	text-align: center;
+	font-size: 14px;
+	
+}
+.content_right_innerr ul li a{
+	text-decoration: none;
+	color: #191D3A;
+}
+.geqiang{
+	width: 100%;
+	height: 50px;
+}
+table{
+	width: 100%;
+	border: 1px solid #d5cdcd;	
+}
+table tr td{
+	height: 40px;
+	text-align: center;
+	font-size: 14px;
+	padding: 5px 10px;
+}
+.goodslist .last3{
+	width: 100px;
+
+}
+.last3 span{
+	display: inline-block;
+    color: #3c3cff;
+    cursor: pointer;
+}
+.goodsentrybox{
+	width: 900px;
+	height: 500px;
+	margin: 0 auto;
+}
+.dingdanchakan,.look{
+	width: 1090px;
+	height: 500px;
+}
+.goodsentry,.dingdanxiugai,.quanxianfenpei{
+	width:484px;
+	margin:0px auto;
+}
+.goods{
+	width: 100%;
+	margin-top: 20px;	
+	display: table;
+	position: relative;
+}
+.zhuce{
+	width: 100%;
+    background: #71bddc;
+    text-align: center;
+    font-size: 30px;
+    line-height: 40px;
+    margin: 0px auto;
+    margin-top: 20px;
+    cursor: pointer;
+    border: none;
+    color: #eee;
+    border-radius: 4px;
+}
+.goodsentrybox,.dingdanxiugai,.quanxianfenpei{
+	display: none;
+}
+.goods input{
+	display: table-cell;
+	width: 380px;
+    height: 30px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #928080;
+    padding: 5px 10px;
+}
+.showImg{
+	display: none;
+}
+.imgBox .upImg{
+	width: 100%;
+	height: 100%;
+	position:absolute;
+	left: 0px;
+	top: 0px;
+	opacity: 0;
+}
+.goods div{
+	display: table-cell;
+}
+#gcount{
+	display: table-cell;
+	width:402px;
+	height: 200px;
+	resize: none;
+	padding: 10px;
+	border-radius: 4px;
+    box-sizing: border-box;
+}
+.imgBox{
+	width: 404px;
+	height: 200px;
+	position: relative;
+	border:1px solid #979797;
+	box-sizing: border-box;
+	border-radius: 4px;
+}
+.productManage{
+	padding: 20px;
+    text-align: center;
+    background: #3a729a;
+    color: #fff;
+    font-size:20px;
+}
+.li1{
+	background: #d8fdf3;	
+	color: #5caf1c;
+}
+.current,.OrderView,.userView{
+	background: rgb(216, 253, 243);
+    color: rgb(92, 175, 28);
+}
+.btnGroup{
+	width: 50%;
+	margin:0px auto;
+	margin-top: 20px;
+}
+.btnGroup div{
+	display: inline-block;
+    text-align: center;
+    background: #045277;
+    color: white;
+    width: 20%;
+    margin: 0px 2%;
+    border-radius: 4px;
+    cursor: pointer;
+    line-height: 30px;
+}
+.content{
+	display: table；
+}

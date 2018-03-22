@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="secondSSM"
+  id="myeclipse.1498363898530"
+  context-root="/secondSSM"
+  j2ee-spec="6.0"
+  archive="secondSSM.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

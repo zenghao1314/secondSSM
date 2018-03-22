@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 文件的命名 表名 + Mapper -->
+<!-- namespace:接口包 + 接口名-->
+<mapper namespace="com.jsx.map.GoodsMapper">
+	<delete id="delete" parameterType="int">
+		DELETE FROM let_good
+		WHERE gid=#{gid}
+	</delete>
+	<insert id="add" parameterType="com.jsx.model.Goods">
+		INSERT INTO let_good(gname,gtype,gnum,gprice,gcontent,gimage)
+		VALUES(#{gname}, #{gtype},#{gnum},#{gprice},#{gcontent},#{image})
+	</insert>
+	<select id="getAll" resultType="com.jsx.model.Goods">
+		SELECT *
+		FROM  let_good
+	</select>
+</mapper>

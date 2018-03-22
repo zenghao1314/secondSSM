@@ -1,0 +1,97 @@
+body{
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+    font-family: MicrosoftYaHei;
+    background-color: #fff;
+}
+body>div{
+    position: relative;
+    margin: auto;
+    background-color: #fff;
+}
+
+.container{
+	margin-bottom: 20px;
+}
+
+.container>div{
+    position: relative;
+    display: table;
+    width:1200px;
+    margin: auto;
+}
+
+.nw-center{
+	display: table;
+	margin: auto;
+}
+
+/****** nav ******/
+/****** 兼容到IE8，主流浏览器均支持 ******/
+
+.nav{
+    display: table;
+    table-layout: fixed;
+}
+
+.nav>*{
+    display: table-cell;
+	text-align: center;
+}
+/****** nav ******/
+
+/****** btn ******/
+.btn{
+	display: block;
+	text-align: center;
+	cursor: pointer;
+}
+/****** btn ******/
+
+
+ul,li,h1{
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+a{
+	margin: 0;
+    padding: 0;
+    outline: 0;
+    border: 0;
+    text-decoration: none;
+    list-style: none;
+}
+
+div,img,ul,li,span{
+	position: relative;
+	font-family: "Microsoft YaHei";
+}
+
+div[data-col]:first-child{
+	display:block;
+}
+
+div[data-col]{
+	display:none;
+}
+
+.d-group{
+	position: relative;
+	display: table;
+	width: 100%;
+}
+
+.d-group>div{
+	position: relative;
+	display: table-cell;
+}
+
+.icon{
+	display: inline-block;
+	background-repeat: no-repeat;
+	background-position: center;
+}

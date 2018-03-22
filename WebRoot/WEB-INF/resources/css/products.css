@@ -1,0 +1,115 @@
+*{
+	font-family: "微软雅黑";
+}
+.container{
+	width: 70%;
+	background: #F8F8F8;	
+}
+
+a{
+	text-decoration: none;
+	color: #000;
+}
+
+#title{
+	width: 100%;
+	height: 40px;
+	font-size:20px ; 
+	background:#f0f0f0;
+}
+#title ul{
+	list-style-type: none;
+}
+#title ul li{
+	float: left;
+	font-size: 25px;
+	padding-left: 30px;
+	padding-right: 30px;
+	line-height: 40px;
+	border-radius: 10px;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+.introduce{
+	margin-top:10px ;
+	width: 100%;
+	height: 44px;
+	font-size:20px ;
+	border-bottom: 1px solid #555555;
+	color: rgba(100,100,100);
+	line-height: 44px;
+}
+.introduce .left{
+	float: left;
+	line-height:45px;
+	padding-left:75px ;
+}
+.introduce .right{
+	float: right;
+	line-height:45px;
+
+}
+.img-big img{
+	display: none;
+	height: 500px;
+	width: auto;
+}
+
+.row{
+	margin-top: 20px;
+}
+.img-less{
+	list-style-type: none;
+	left: float;
+	cursor: pointer;
+}
+.img-less div{
+	float: left;
+}
+.img-less div img{
+	height: 50px;
+}
+.col-md-7 h3{
+	color:#5E5E5E;
+}
+.col-md-7 {
+	font-size: 20px;
+	color:#31708F;
+}
+.page-header{
+	margin-top: 0px;
+}
+.col-md-7 .YHJ{
+	color: red;
+}
+.col-md-7 table tr{
+	padding:20px;
+}
+.choose .col-sm-5{
+	font-size: 14px;
+	line-height: 33px;
+}
+.choose-color {
+	float: left;
+	line-height: 40px;
+}
+.choose-color img{
+	vertical-align: middle;
+}
+.products{
+	clear: both;
+}
+#number{
+	width: 50px;
+}
+.btn{
+	margin-top:-2px ;
+}
+
+.tb-footer-bd{
+	margin-top: 100px;
+}
+.tb-footer-bd span{
+	margin-right: 20px;
+	}
+
