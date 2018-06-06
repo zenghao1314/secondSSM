@@ -23,13 +23,12 @@
 </div>
 <div class="navBox">
     <div class="nav">
-        <div class="navItem"><a href="/jump/Main"></a>首页</div>
+        <div class="navItem"><a href="/jump/Main">首页</a></div>
         <div class="navItem"><a href="/jump/hostSell">热销商品</a></div>
         <div class="navItem"><a href="/jump/shopping">我的购物车</a></div>
         <div class="navItem"><a href="/jump/information">个人资料</a> </div>
         <div class="LogAndReg">
-            <a href="">登录</a>
-            <a href="">注册</a>
+            <a href="http://localhost:8080/">注销</a>
         </div>
     </div>
 </div>
@@ -55,11 +54,15 @@
             <div class="form-group">
                 <label for="address">地址:</label>
                 <input type="text" id="address" name="address" class="form-control" value="${user.uaddress}">
-            </div>
+            </div><%--<div class="form-group">
+                <label for="uid">地址:</label>
+                <input type="text" id="uid" name="uid" class="form-control" value="${user.uid}">
+            </div>--%>
+
 
             <!--商品信息确认-->
             <h2 class="page-header">请确认商品信息</h2>
-            <table class="table table-striped ">
+            <table class="table table-striped showProduct ">
                 <tr class="success">
                     <td >商品名称</td>
                     <td>单价</td>
@@ -68,22 +71,13 @@
                     <td></td>
                 </tr>
                 <!--如果要增加商品  复制下面这一个tr标签-->
-                <tr class="info">
-                    <td>红米4x</td>
-                    <td class="price">998</td>
-                    <td >
-                        <img src="../resources/images/substract.png" class="substractBtn" />
-                        <input class="productsNumber" type="text" value="1" readonly="true" />
-                        <img src="../resources/images/add.png" class="addBtn"/>
-                    </td>
-                    <td class="total">998</td>
-                    <td ><span class="delete">删除</span></td>
-                </tr>
+
             </table>
 
             <div class="affirm">
                 <span>确认</span>
             </div>
+
             <div class="filter"></div>
             <div class="orderInfo">
                 <div class="closeBtn"></div>
@@ -96,31 +90,34 @@
                         <td>价格</td>
                     </tr>
                     <!--如果要增加商品  复制下面这一个tr标签-->
-                    <tr>
-                        <td>红米4x</td>
-                        <td class="order_price">998</td>
-                        <td class="order_number">1</td>
-                        <td class="order_total">998</td>
-                    </tr>
+
                 </table>
 
-                <table class="table">
+                <table class="table orderProduct" >
+
+                </table>
+
+                <table class="table userinfo"  >
                     <tr>
                         <td>总价：</td>
-                        <td class="totalPrice">998</td>
-                        <td>收货地址：</td>
-                        <td class="address">重庆重庆市合川区合阳城街道假日大道1号 重庆邮电大学移通学院</td>
+                        <td class="totalPrice"></td>
                     </tr>
-
+                    <tr>
+                        <td>收货地址：</td>
+                        <td class="address">${user.uaddress}</td>
+                    </tr>
                     <tr>
                         <td>收货人：</td>
-                        <td class="name">帅哥</td>
+                        <td class="recName">${user.uname}</td>
+                    </tr>
+                    <tr>
                         <td>联系方式：</td>
-                        <td class="phone">18983167557</td>
+                        <td class="phone">${user.uphone}</td>
                     </tr>
                 </table>
 
-                <input type="submit" class="btn btn-lg position"  value="提交订单">
+                <span class="position">提交订单</span>
+               <%-- <input type="submit" class="btn btn-lg position"  value="提交订单">--%>
             </div>
 
 
@@ -145,7 +142,7 @@
 </p>
 </div>
 </body>
-<script src="js/jquery.min.js"></script>
-<script src="js/bootstrap.min.js" ></script>
-<script src="js/shopping.js"></script>
+<script src="../resources/js/jquery.min.js"></script>
+<script src="../resources/js/bootstrap.min.js" ></script>
+<script src="../resources/js/shopping.js"></script>
 </html>

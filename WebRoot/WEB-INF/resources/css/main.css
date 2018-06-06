@@ -9,7 +9,9 @@
 	margin: 0px auto;
 	padding: 0px;
 }
-
+body{
+	background: #f7f5f2;
+}
 .bgImg{
 	width: 100%;
 }
@@ -36,12 +38,12 @@
 	cursor: pointer;
 }
 .LogAndReg{
-	position: absolute;
-	top: 0px;
-	right: 400px;
+	float: right;
     line-height: 30px;
+	padding: 0px !important;
 }
 .LogAndReg a{
+	color: #fff;
 	padding: 0px 10px;
 }
 .col-md-4{
@@ -88,14 +90,22 @@
 .nav2 .left{
 	width: 200px;
 	height: 50px;
+	font-family: -webkit-pictograph;
+	line-height: 50px;
+	font-size: 32px;
+	text-align: center;
+	color: #7f8482;
 }
 .left a{
 	width: 100%;
 	height: 100%;
 }
 .col-md-3{
+	width: 23.3% !important;
 	border: none;
 	padding: 10px;
+	box-sizing: border-box;
+	margin: 10px;
 }
 .col-md-3 img{
 	width: 90%;
@@ -167,9 +177,10 @@
 	border: 1px solid #F0F0F0;
 }
 .title{
-	font-size:18px ;
-	background: rgb(70, 71, 75);
-	color: #F0F0F0;
+	font-size: 18px;
+	background: rgb(255, 80, 0);
+	color: #ffffff;
+	margin-top: 10px;
 }
 .productsTitle{
 	font-size: 18px;
@@ -222,6 +233,7 @@
 .cost{
 	display: table;
 	width: 90%;
+	margin-top: 10px;
 }
 .introduce{
 	width: 90%;
@@ -316,9 +328,14 @@
 }
 .glyphicon {
 	color:#9695af;
+	cursor: pointer;
+	font-size: 25px;
 }
 .introduce{
 	color:#565758;
+}
+.navItem a{
+	color:#f0f0f0;
 }
 .exemption{
 	border:none;
@@ -326,4 +343,20 @@
 }
 .buyNum{
 	color:#454647;
+}
+.gname{
+	font-size: 16px;
+	color: #abacb7;
+	padding: 5px 0px;
+}
+.col-md-12{
+	padding: 0px !important;
+}
+.loadMore{
+	margin-top: 20px;
+	height: 50px;
+	line-height: 30px;
+	color: #e07676;
+	cursor: pointer;
+	font-size: 18px;
 }

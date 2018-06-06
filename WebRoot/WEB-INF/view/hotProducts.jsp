@@ -1,186 +1,161 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Administrator
-  Date: 2018/3/22/022
-  Time: 0:45
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>热销商品</title>
-    <link rel="stylesheet" type="text/css" href="bs/css/bootstrap.min.css"/>
-    <link rel="stylesheet" type="text/css" href="css/hotProducts.css" />
-    <script type="text/javascript" src="js/jquery.min.js" ></script>
-    <script type="text/javascript" src="bs/js/holder.min.js" ></script>
-    <script type="text/javascript" src="js/hotProducts.js" ></script>
+    <link rel="stylesheet" type="text/css" href="../resources/bs/css/bootstrap.css"  />
+    <link rel="stylesheet" type="text/css" href="../resources/bs/fonts/glyphicons-halflings-regular.ttf"/>
+    <link rel="stylesheet" href="../resources/css/main.css" />
+    <script src="../resources/js/jquery.min.js"></script>
+    <script src="../resources/js/bootstrap.min.js" ></script>
+    <script src="../resources/js/hotProducts.js"></script>
 </head>
 <body>
+<!--第一部分顶部导航栏-->
+<div class="bgImg">
+    <img src="../resources/images/header.jpg" height="100" width="100%"/>
+</div>
+<div class="navBox">
+    <div class="nav">
+        <div class="navItem"> <a href="/jump/Main">首页</a></div>
+        <div class="navItem"> <a href="/jump/hostSell"> 热销商品</a></div>
+        <div class="navItem"> <a href="${pageContext.request.contextPath}/jump/shopping">我的购物车</a></div>
+        <div class="navItem"> <a href="${pageContext.request.contextPath}/jump/information"> 个人资料</a></div>
+        <div class="LogAndReg">
+            <a href="http://localhost:8080/">注销</a>
+        </div>
+    </div>
+
+</div>
+
 <div class="container">
-    <!--顶部导航栏-->
-    <div id="title" >
-        <ul class="text-center">
-            <li>
-                首页
-            </li>
-            <li>
-                热销商品
-            </li>
-            <li>
-                我的购物车
-            </li>
-            <li>
-                个人资料
-            </li>
-            <li>
-                用户登录
-            </li>
-            <li>
-                用户注册
-            </li>
-        </ul>
-    </div>
 
-    <div class="page-header">
-        <span><font size="6">热销商品</font></span><span>
-					<div class="right ">
-						<span style="vertical-align: center;"><input type="text " name="product " placeholder="请输入要搜索的商品 " class="ssk" style="height: 33px; width: 250px; border-radius: 5px; "/>
-						<button class="btn btn-md btn-primary position">搜索</button></span>
-					</div></span>
+    <!--商品界面-->
+    <div class="col-md-12 column clearfix text-center" id="SYproducts">
 
-    </div>
-    <!--第一行商品-->
-    <div class="row">
-        <!--第一个商品-->
-        <div class="col-md-3">
-            <div class="col-md-6" >
-                <a href="products.html"><img src="images/办公设备.jpg" style="width: 90%; "/></a>
+        <!--首页的商品界面-->
+        <p class="title">热销商品</p>
+        <!--第一行商品只需要一行-->
+        <div class="row">
+            <div class="col-md-3 column ">
+                <input type="hidden" value="100" class="id">
+                <div class="gname">绿豆糕</div>
+                <img src="http://localhost:8080/resources/images/lvdougao.jpg" height="200px">
+                <div class="cost">
+                    <div class="price">￥15</div>
+                    <div class="exemption">包邮</div>
+                </div>
+                <div class="introduce">好吃不贵的绿豆糕，儿时的回忆</div>
+                <div class="shoppingCart"><span class="glyphicon glyphicon-shopping-cart shop" title="加入购物车" onclick="addShopCar(this)"></span>
+                    <a href="/jump/shopping"><span class="glyphicon glyphicon glyphicon-yen " title="结算" style="float: right;"></span></a>
+                </div>
             </div>
-            <div class="col-md-6 style">
-                <!--商品介绍-->
-                <div class="introduce">卡西欧(CASIO)手表 G-SHOCK系列 </div>
-                <br />
-                <span class="price">￥1490.00</span><br />
-                <span>销量：520</span><br />
-                <a href="shopping.html"><button class="btn btn-md products-button">立即购买</button></a>
-            </div>
-        </div>
-        <!--第二个商品-->
-        <div class="col-md-3">
-            <div class="col-md-6">
-                <a href="products.html"><img src="images/办公设备.jpg"style="width: 90%; "/></a>
-            </div>
-            <div class="col-md-6 style">
-                <div class="introduce">卡西欧(CASIO)手表 G-SHOCK系列 </div>
-                <br />
-                <span class="price">￥1490.00</span><br />
-                <span>销量：520</span><br />
-                <a href="shopping.html"><button class="btn btn-md products-button">立即购买</button></a>
-            </div>
-        </div>
-        <!--第三个商品-->
-        <div class="col-md-3"">
-        <div class="col-md-6">
-            <a href="products.html"><img src="images/办公设备.jpg" style="width: 90%; "/></a>
-        </div>
-        <div class="col-md-6 style">
-            <div class="introduce">卡西欧(CASIO)手表 G-SHOCK系列 </div>
-            <br />
-            <span class="price">￥1490.00</span><br />
-            <span>销量：520</span><br />
-            <a href="shopping.html"><button class="btn btn-md products-button">立即购买</button></a>
-        </div>
-    </div>
-</div>
 
-<!--第二行商品-->
-<div class="row">
-    <!--第一个商品-->
-    <div class="col-md-3">
-        <div class="col-md-6">
-            <a href="products.html"><img src="images/办公设备.jpg" style="width: 90%; "/></a>
-        </div>
-        <div class="col-md-6 style">
-            <div class="introduce">卡西欧(CASIO)手表 G-SHOCK系列 </div>
-            <br />
-            <span class="price">￥1490.00</span><br />
-            <span>销量：520</span><br />
-            <a href="shopping.html"><button class="btn btn-md products-button">立即购买</button></a>
-        </div>
-    </div>
-    <!--第二个商品-->
-    <div class="col-md-3">
-        <div class="col-md-6" >
-            <a href="products.html"><img src="images/办公设备.jpg" style="width: 90%; "/></a>
-        </div>
-        <div class="col-md-6 style">
-            <div class="introduce">卡西欧(CASIO)手表 G-SHOCK系列 </div>
-            <br />
-            <span class="price">￥1490.00</span><br />
-            <span>销量：520</span><br />
-            <a href="shopping.html"><button class="btn btn-md products-button">立即购买</button></a>
-        </div>
-    </div>
-    <!--第三个商品-->
-    <div class="col-md-3">
-        <div class="col-md-6" >
-            <a href="products.html"><img src="images/办公设备.jpg" style="width: 90%; "/></a>
-        </div>
-        <div class="col-md-6 style">
-            <div class="introduce">卡西欧(CASIO)手表 G-SHOCK系列 </div>
-            <br />
-            <span class="price">￥1490.00</span><br />
-            <span>销量：520</span><br />
-            <a href="shopping.html"><button class="btn btn-md products-button">立即购买</button></a>
-        </div>
-    </div>
-</div>
-<!--第三行商品-->
-<div class="row">
-    <!--第一个商品-->
-    <div class="col-md-3" >
-        <div class="col-md-6" >
-            <a href="products.html"><img src="images/办公设备.jpg" style="width: 90%; "/></a>
-        </div>
-        <div class="col-md-6 style">
-            <div class="introduce">卡西欧(CASIO)手表 G-SHOCK系列 </div>
-            <br />
-            <span class="price">￥1490.00</span><br />
-            <span>销量：520</span><br />
-            <a href="shopping.html"><button class="btn btn-md products-button">立即购买</button></a>
-        </div>
-    </div>
-    <!--第二个商品-->
-    <div class="col-md-3" >
-        <div class="col-md-6">
-            <a href="products.html"><img src="images/办公设备.jpg" style="width: 90%; "/></a>
-        </div>
-        <div class="col-md-6 style">
-            <div class="introduce">卡西欧(CASIO)手表 G-SHOCK系列 </div>
-            <br />
-            <span class="price">￥1490.00</span><br />
-            <span>销量：520</span><br />
-            <a href="shopping.html"><button class="btn btn-md products-button">立即购买</button></a>
-        </div>
-    </div>
-    <!--第三个商品-->
-    <div class="col-md-3">
-        <div class="col-md-6"" >
-        <a href="products.html"><img src="images/办公设备.jpg" style="width: 90%; "/></a>
-    </div>
-    <div class="col-md-6 style">
-        <div class="introduce">卡西欧(CASIO)手表 G-SHOCK系列 </div>
-        <br />
-        <span class="price">￥1490.00</span><br />
-        <span>销量：520</span><br />
-        <a href="shopping.html"><button class="btn btn-md products-button">立即购买</button></a>
-    </div>
-</div>
-</div>
-<h2 class="text-center"><a>加载更多</a></h2>
-</div>
+            <div class="col-md-3 column ">
+                <input type="hidden" value="101" class="id">
+                <div class="gname">棉花糖</div>
+                <img src="http://localhost:8080/resources/images/mianhuatang.jpg" height="200px">
+                <div class="cost">
+                    <div class="price">￥2</div>
+                    <div class="exemption">包邮</div>
+                </div>
+                <div class="introduce">休闲零食缤纷麻花形七彩棉花糖70g</div>
+                <div class="shoppingCart"><span class="glyphicon glyphicon-shopping-cart shop" title="加入购物车" onclick="addShopCar(this)"></span>
+                    <a href="/jump/shopping"><span class="glyphicon glyphicon glyphicon-yen " title="结算" style="float: right;"></span></a>
+                </div>
+            </div>
 
+            <div class="col-md-3 column ">
+                <input type="hidden" value="101" class="id">
+                <div class="gname">南瓜子</div>
+                <img src="http://localhost:8080/resources/images/nanguazi.jpg" height="200px">
+                <div class="cost">
+                    <div class="price">￥12</div>
+                    <div class="exemption">包邮</div>
+                </div>
+                <div class="introduce">南瓜籽山区农家南瓜子仁休闲零食</div>
+                <div class="shoppingCart"><span class="glyphicon glyphicon-shopping-cart shop" title="加入购物车" onclick="addShopCar(this)"></span>
+                    <a href="/jump/shopping"><span class="glyphicon glyphicon glyphicon-yen " title="结算" style="float: right;"></span></a>
+                </div>
+            </div>
+
+            <div class="col-md-3 column ">
+                <input type="hidden" value="102" class="id">
+                <div class="gname">莫斯利安原味酸奶</div>
+                <img src="http://localhost:8080/resources/images/suannai.jpg" height="200px">
+                <div class="cost">
+                    <div class="price">￥6</div>
+                    <div class="exemption">包邮</div>
+                </div>
+                <div class="introduce">光明莫斯利安原味酸奶200g</div>
+                <div class="shoppingCart"><span class="glyphicon glyphicon-shopping-cart shop" title="加入购物车" onclick="addShopCar(this)"></span>
+                    <a href="/jump/shopping"><span class="glyphicon glyphicon glyphicon-yen " title="结算" style="float: right;"></span></a>
+                </div>
+            </div>
+
+            <div class="col-md-3 column ">
+                <input type="hidden" value="103" class="id">
+                <div class="gname">怡宝</div>
+                <img src="http://localhost:8080/resources/images/yibao.jpg" height="200px">
+                <div class="cost">
+                    <div class="price">￥2</div>
+                    <div class="exemption">包邮</div>
+                </div>
+                <div class="introduce">怡宝饮用水 纯净水 555ml</div>
+                <div class="shoppingCart"><span class="glyphicon glyphicon-shopping-cart shop" title="加入购物车" onclick="addShopCar(this)"></span>
+                    <a href="/jump/shopping"><span class="glyphicon glyphicon glyphicon-yen " title="结算" style="float: right;"></span></a>
+                </div>
+            </div>
+
+            <div class="col-md-3 column ">
+                <input type="hidden" value="103" class="id">
+                <div class="gname">可乐</div>
+                <img src="http://localhost:8080/resources/images/kele.jpg" height="200px">
+                <div class="cost">
+                    <div class="price">￥6</div>
+                    <div class="exemption">包邮</div>
+                </div>
+                <div class="introduce">现货巴厘岛限定网红百事蓝色可乐blue梅子味进口碳酸饮料</div>
+                <div class="shoppingCart"><span class="glyphicon glyphicon-shopping-cart shop" title="加入购物车" onclick="addShopCar(this)"></span>
+                    <a href="/jump/shopping"><span class="glyphicon glyphicon glyphicon-yen " title="结算" style="float: right;"></span></a>
+                </div>
+            </div>
+
+            <div class="col-md-3 column ">
+                <input type="hidden" value="103" class="id">
+                <div class="gname">魔芋辣条</div>
+                <img src="http://localhost:8080/resources/images/latiao.jpg" height="200px">
+                <div class="cost">
+                    <div class="price">￥5</div>
+                    <div class="exemption">包邮</div>
+                </div>
+                <div class="introduce">魔芋爽180g 魔芋辣条零食魔芋丝素毛肚香麻辣</div>
+                <div class="shoppingCart"><span class="glyphicon glyphicon-shopping-cart shop" title="加入购物车" onclick="addShopCar(this)"></span>
+                    <a href="/jump/shopping"><span class="glyphicon glyphicon glyphicon-yen " title="结算" style="float: right;"></span></a>
+                </div>
+            </div>
+
+            <div class="col-md-3 column ">
+                <input type="hidden" value="103" class="id">
+                <div class="gname">大面筋辣条</div>
+                <img src="http://localhost:8080/resources/images/latiao1.jpg" height="200px">
+                <div class="cost">
+                    <div class="price">￥5</div>
+                    <div class="exemption">包邮</div>
+                </div>
+                <div class="introduce">大面筋106g 卫龙辣条零食麻辣辣片小吃特产</div>
+                <div class="shoppingCart"><span class="glyphicon glyphicon-shopping-cart shop" title="加入购物车" onclick="addShopCar(this)"></span>
+                    <a href="/jump/shopping"><span class="glyphicon glyphicon glyphicon-yen " title="结算" style="float: right;"></span></a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="loadMore">点击加载更多</div>
+    </div>
+</div>
 <div class="tb-footer-bd text-center" >
     <hr width="70%" />
     <p>
@@ -191,7 +166,7 @@
     <p>
         <span>网络文化经营许可证：渝网文[2013]0268-027号</span><b>|</b><span>增值电信业务经营许可证：渝B2-20080224</span><b>|</b>
         <span>信息网络传播视听节目许可证：1109364号</span><b>|</b><span>互联网违法和不良信息举报电话：0571-81683755 fusikang.com</span></p><p><span>
-	            <span class="tb-footer-mod" style="background-position:-861px 0px; width:20px; height: 20px; "></span>
+	              <span class="tb-footer-mod" style="background-position:-861px 0px; width:20px; height: 20px; "></span>
 	              	渝公网安备 33010002000078号</span>
 </p>
 </div>

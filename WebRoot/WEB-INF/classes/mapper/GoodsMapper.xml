@@ -9,7 +9,7 @@
 	</delete>
 	<insert id="add" parameterType="com.jsx.model.Goods">
 		INSERT INTO let_good(gname,gtype,gnum,gprice,gcontent,gimage)
-		VALUES(#{gname}, #{gtype},#{gnum},#{gprice},#{gcontent},#{image})
+		VALUES(#{gname}, #{gtype},#{gnum},#{gprice},#{gcontent},#{gimage})
 	</insert>
 	<select id="getAll" resultType="com.jsx.model.Goods">
 		SELECT *

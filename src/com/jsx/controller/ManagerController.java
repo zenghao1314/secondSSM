@@ -1,16 +1,15 @@
 package com.jsx.controller;
 
 import com.jsx.model.Goods;
+import com.jsx.model.Order;
 import com.jsx.model.User;
 import com.jsx.service.GoodsService;
+import com.jsx.service.OrderSerice;
 import com.jsx.service.UserService;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
@@ -31,12 +30,17 @@ public class ManagerController {
     private UserService userService;
     @Autowired
    private GoodsService goodsService;
+    @Autowired
+    private OrderSerice orderSerice;
+
     @RequestMapping(value = "/ManagerLogin")
     public String doLogin(User user, @RequestParam("uname") String uname, @RequestParam("password") String pwd, HttpServletRequest request, Map<String,Object> map)
     {
         if ("zzh".equals(uname)&&"123".equals(pwd)){
             List<User> userList = userService.getAll();
             List<Goods> goodsList=goodsService.getAll();
+            List<Order> orderList= orderSerice.getAll();
+            request.setAttribute("Order",orderList);
             request.setAttribute("Commodity",goodsList);
            request.setAttribute("UserManager",userList);
             return "managermentCenter";
@@ -45,15 +49,22 @@ public class ManagerController {
         }
     }
 
-    @RequestMapping(value = "/delete/{id}")
-    public String delete(@PathVariable(value="id") Integer id)
+
+    @RequestMapping(value = "/delete")
+    public String delete(int  gid, HttpServletRequest request)
     {
-        userService.deleteById(id);
-        return "redirect:/getall";
+         goodsService.deleteById(gid);
+        List<User> userList = userService.getAll();
+        List<Goods> goodsList=goodsService.getAll();
+        List<Order> orderList= orderSerice.getAll();
+        request.setAttribute("Order",orderList);
+        request.setAttribute("Commodity",goodsList);
+        request.setAttribute("UserManager",userList);
+        return "managermentCenter";
     }
     @RequestMapping(value = "/Goodsadd", method = RequestMethod.POST)
     public String add(Goods goods, HttpServletRequest request, HttpSession session,
-                     HttpServletResponse response)throws IllegalStateException, IOException {
+                      HttpServletResponse response)throws IllegalStateException, IOException {
         String pathRoot = request.getSession().getServletContext()
                 .getRealPath("");
         String path = "";
@@ -88,11 +99,27 @@ public class ManagerController {
                 fos.write(file.getBytes());
                 fos.flush();
                 fos.close();
-                goods.setImage(path);
+                goods.setGimage(path);
             }
-            }
+        }
         goodsService.add(goods);
-        session.setAttribute("Goods",goods);
+        List<User> userList = userService.getAll();
+        List<Goods> goodsList=goodsService.getAll();
+        List<Order> orderList= orderSerice.getAll();
+        request.setAttribute("Order",orderList);
+        request.setAttribute("Commodity",goodsList);
+        request.setAttribute("UserManager",userList);
         return "managermentCenter";
+    }
+
+    @RequestMapping(value = "/getAllGoods")
+    @ResponseBody
+    //public String doLogin(HttpServletRequest request)
+    public List<Goods> getAllGoods(
+            HttpServletRequest request,Map<String,Object> map)
+    {
+        List<Goods> findGoods=goodsService.getAll();
+        return findGoods;
+
     }
 }

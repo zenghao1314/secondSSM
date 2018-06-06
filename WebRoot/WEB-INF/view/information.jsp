@@ -32,27 +32,19 @@
         <div class="navItem"><a href="/jump/hostSell">热销商品</a></div>
         <div class="navItem"><a href="/jump/shopping">我的购物车</a></div>
         <div class="navItem"><a href="${pageContext.request.contextPath}/jump/information" >个人资料</a></div>
+        <div class="LogAndReg">
+            <a href="http://localhost:8080/">注销</a>
+        </div>
     </div>
 </div>
 <div class="container">
     <div class="containTitle">
         个人资料
     </div>
-    <form action="${pageContext.request.contextPath}/update" id="formData"  method="post" >
-    <div class="row">
-        <!--头像显示-->
-        <%--<div class="col-md-2">--%>
-            <%--<div class="form-group text-center">--%>
-               <%--<img src="../resources/images/portrait.png" width="160px" height="160px" class="photo" id="photo" />--%>
-                <%--<lable for="IMGportrait" class="upBotton">上传头像</lable>--%>
-                <%--<input type="file" class="upfile" name="uimage" id="file"  value="${user.uimage}">--%>
-            <%--</div>--%>
-
-
-        </div>
+    <form action="${pageContext.request.contextPath}/update" id="formData"  method="post"  enctype="multipart/form-data">
         <!--个人资料-->
 
-            <div class="col-md-10">
+            <div class="col-md-12">
                 <div class="info">
                     <div class="itemTltie">
                         基本信息
@@ -83,7 +75,7 @@
                     <!--电话-->
                     <div class="form-inline">
                         <lable for="photo" class="control-label">联系电话：</lable>
-                        <input type="text" name="uphone" id="phone"  class="form-control" maxlength="11"/>
+                        <input type="text" name="uphone" id="phone"  class="form-control" maxlength="11"/ value="${user.uphone}">
                     </div>
                     <!--地址-->
                     <div class="form-inline">
@@ -95,7 +87,7 @@
                         <lable for="email" class="control-label">年龄：</lable>
                         <input type="text" name="uage" id="uage"  class="form-control" value="${user.uage}" />
                     </div>
-                    <div class="form-inline" >
+                    <div class="form-inline" style="display: none;" >
                         <lable for="email" class="control-label" >id：</lable>
                         <input type="text" name="uid" id="uid"  class="form-control" value="${user.uid}"  hidden="hidden"/>
                     </div>

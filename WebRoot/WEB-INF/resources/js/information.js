@@ -1,4 +1,13 @@
 $(function(){
+    //导航栏变色
+    $(".navItem").hover(function(){
+        $(this).css("background","#f0f0f0");
+        $(this).children().css("color","#333")
+    },function(){
+        $(this).css("background","#333");
+        $(this).children().css("color","#f0f0f0")
+    })
+
 	//日期选择
 	 $("#birthday").calendar({
         controlId: "divDate",                                 // 弹出的日期控件ID，默认: $(this).attr("id") + "Calendar"

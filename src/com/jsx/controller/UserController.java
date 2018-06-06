@@ -53,7 +53,6 @@ public class UserController {
         }
     }
 
-	
 	@RequestMapping(value = "/getall")
 	public String getAll(Map<String,Object> map)
 	{
@@ -87,12 +86,13 @@ public class UserController {
 
 	
 	@RequestMapping("/update")
-    public String update(User user,HttpSession session,HttpServletRequest request) {
+	public String update(User user,HttpSession session,HttpServletRequest request) {
 		userService.update(user);
 		session.setAttribute("user",user);
-        return "main";
-    }
-	
+		return "main";
+	}
+
+
 
 	
 

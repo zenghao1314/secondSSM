@@ -13,11 +13,16 @@
 	
 }
 .header .logo{
-	float: left;
-	margin-right:40px;
-			}
-.nav{
 	float: right;
+	margin-left:40px;
+	width: 100px;
+	height: 100%;
+	font-size: 16px;
+	line-height: 58px;
+	text-align: center;
+	}
+.nav{
+	float: left;
 }
 .header .nav ul{
 	list-style: none;
@@ -49,7 +54,7 @@
 .content_left{
 	float: left;
 	width: 200px;
-	height:700px;
+	height:500px;
 	background:skyblue;
 }
 .content_left p{
@@ -87,7 +92,6 @@
 }
 .content_right{
 	width:1090px;
-	height: 800px;
 	float: left;
 	margin-left: 10px;
 }
@@ -159,7 +163,7 @@ table tr td{
 	height: 500px;
 }
 .goodsentry,.dingdanxiugai,.quanxianfenpei{
-	width:484px;
+	width:460px;
 	margin:0px auto;
 }
 .goods{
@@ -209,15 +213,15 @@ table tr td{
 }
 #gcount{
 	display: table-cell;
-	width:402px;
-	height: 200px;
+	width:380px;
+	height: 80px;
 	resize: none;
 	padding: 10px;
 	border-radius: 4px;
     box-sizing: border-box;
 }
 .imgBox{
-	width: 404px;
+	width: 380px;
 	height: 200px;
 	position: relative;
 	border:1px solid #979797;
@@ -255,6 +259,34 @@ table tr td{
     cursor: pointer;
     line-height: 30px;
 }
-.content{
-	display: table；
+
+.curtain{
+	display:none;
+	width: 1100px;
+	height: 100%;
+	position: absolute;
+	top: 90px;
+	left: 225px;
+	background: white;
+}
+.updateBox{
+	width: 470px;
+	margin: 0px auto;
+}
+.productInfoBox>div{
+	width: 100%;
+	display: table;
+}
+.productInfoBox>div div{
+	display: table-cell;
+}
+.productInfoBox>div div:nth-child(2){
+	width: 20px;
+}
+.productInfoBox>div div:nth-child(1){
+	width: 120px;
+}
+.cancel{
+	text-decoration: none;
+	color: #fff;
 }

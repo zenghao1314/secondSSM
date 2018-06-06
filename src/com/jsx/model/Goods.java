@@ -15,7 +15,15 @@ public class Goods {
     private String gtype;
     private int gnum;
     private String gcontent;
-    private String image;
+    private String gimage;
+
+    public String getGimage() {
+        return gimage;
+    }
+
+    public void setGimage(String gimage) {
+        this.gimage = gimage;
+    }
 
     public int getGnum() {
         return gnum;
@@ -61,11 +69,5 @@ public class Goods {
         this.gcontent = gcontent;
     }
 
-    public String getImage() {
-        return image;
-    }
 
-    public void setImage(String image) {
-        this.image = image;
-    }
 }

@@ -43,24 +43,24 @@
     <div class="row">
         <div class="register span6" style="width: 450px;">
             <form action="${pageContext.request.contextPath}/ManagerLogin" method="post">
-                <h2>登陆 <span class="red"><strong>易购</strong></span></h2>
+                <h2>管理员登录</h2>
                 <div class="inp-g">
                     <span class="icon user-mini-icon"></span>
                     <input placeholder="请输入用户名" name="uname"/>
-                    <span class="hintMessage">提示信息</span>
+
                 </div>
 
                 <div class="inp-g">
                     <span class="icon org-mini-icon"></span>
-                    <input placeholder="请输入密码" name="password"/>
-                    <span class="hintMessage">提示信息</span>
+                    <input type="password" placeholder="请输入密码" name="password"/>
                 </div>
 
 
 
 
                 <div class="btn-regist">
-                    <input type="submit" value="登陆">
+                    <input type="submit" value="" style="width: 100%; position: absolute;opacity: 0;">
+                    登陆
                 </div>
                 <div class="goLogin">
                     <a href="">忘记密码？找回密码。</a>
@@ -73,7 +73,7 @@
 <!-- Javascript -->
 <script src="../resources/assets/js/jquery.1.11.3.js"></script>
 <script src="../resources/assets/bootstrap/js/bootstrap.min.js"></script>
-<script src="../resources/assets/js/jquery.backstretch.min.js"></script>
+<script src="../resources/assets/js/newfile.js"></script>
 <script src="../resources/assets/js/scripts.js"></script>
 
 </body>

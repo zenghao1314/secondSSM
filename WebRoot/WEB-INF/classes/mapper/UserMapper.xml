@@ -43,6 +43,6 @@
 	<!---->
 	<delete id="delete" parameterType="int">
 		DELETE FROM letgo_user
-		WHERE id=#{id}
+		WHERE uid=#{uid}
 	</delete>
 </mapper>

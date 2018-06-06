@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 文件的命名 表名 + Mapper -->
+<!-- namespace:接口包 + 接口名-->
+<mapper namespace="com.jsx.map.OrderMapper">
+	<delete id="delete" parameterType="int">
+		DELETE FROM let_order
+		WHERE oid=#{oid}
+	</delete>
+	<insert id="add" parameterType="com.jsx.model.Order">
+		INSERT INTO let_good(gid,uid,otime,onume,oaddress,opay,oprice)
+		VALUES(#{gid}, #{uid},#{otime},#{onume},#{oaddress},#{opay},#{oprice})
+	</insert>
+	<select id="getAll" resultType="com.jsx.model.Order">
+		SELECT *
+		FROM  let_order
+	</select>
+</mapper>

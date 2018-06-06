@@ -1,84 +1,73 @@
 
+var n = "n";
+
 $(function(){
-	
-	
-	$(".navItem").hover(function(){
-		$(this).css({"color":"#333","background":"#f0f0f0"});
-	},function(){
-		$(this).css({"color":"#fff","background":"#333"});
-	})
-	
-	//加入购物车
-	$(".col-md-7 .glyphicon-shopping-cart").click(function(){
-		alert("加入购物车成功");
-	});
-	//切换商品页面
-	//切换休闲专区
-	$(".left-menu table tr").eq(1).click(function(){
-		$(".col-md-7").css("display","none");
-		$("#XXproducts").css("display","block");
-	});
-	//切换饮料专区
-	$(".left-menu table tr").eq(2).click(function(){
-		$(".col-md-7").css("display","none");
-		$("#YLproducts").css("display","block");
-	});
-	//切换水果专区
-	$(".left-menu table tr").eq(3).click(function(){
-		$(".col-md-7").css("display","none");
-		$("#SGproducts").css("display","block");
-	});
-	//切换护理专区
-	$(".left-menu table tr").eq(4).click(function(){
-		$(".col-md-7").css("display","none");
-		$("#HLproducts").css("display","block");
-	});
-	//切换清洁专区
-	$(".left-menu table tr").eq(5).click(function(){
-		$(".col-md-7").css("display","none");
-		$("#QJproducts").css("display","block");
-	});
-	//切换营养专区
-	$(".left-menu table tr").eq(6).click(function(){
-		$(".col-md-7").css("display","none");
-		$("#YYproducts").css("display","block");
-	});
-	//切换速食专区
-	$(".left-menu table tr").eq(7).click(function(){
-		$(".col-md-7").css("display","none");
-		$("#SSproducts").css("display","block");
-	});
-	//切换烟酒专区
-	$(".left-menu table tr").eq(8).click(function(){
-		$(".col-md-7").css("display","none");
-		$("#YJproducts").css("display","block");
-	});
-	//切换调味专区
-	$(".left-menu table tr").eq(9).click(function(){
-		$(".col-md-7").css("display","none");
-		$("#TWproducts").css("display","block");
-	});
-	//切换速冻专区
-	$(".left-menu table tr").eq(10).click(function(){
-		$(".col-md-7").css("display","none");
-		$("#SDproducts").css("display","block");
-	});
-	//切换居家专区
-	$(".left-menu table tr").eq(11).click(function(){
-		$(".col-md-7").css("display","none");
-		$("#JJproducts").css("display","block");
-	});
-	//切换居家专区
-	$(".left-menu table tr").eq(12).click(function(){
-		$(".col-md-7").css("display","none");
-		$("#studyproducts").css("display","block");
-	});
-	
-	//商品边框
-//	$(".col-md-3").hover(function(){
-//		$(this).css("border","1px solid #f00");	
-//	},function(){
-//		$(this).css("border","none");
-//	});
-	
-	});
+    /*getAllGoods();*/
+
+    //导航栏变色
+    $(".navItem").hover(function(){
+        $(this).css("background","#f0f0f0");
+        $(this).children().css("color","#333")
+    },function(){
+        $(this).css("background","#333");
+        $(this).children().css("color","#f0f0f0")
+    })
+
+})
+
+
+function getAllGoods() {
+	$.ajax({
+        type: 'post',
+        url: '/getAllGoods',
+        success: function (data) {
+
+        $(".row").html("");
+        var HTML="";
+        data.forEach(function (item){
+
+            HTML += '<div class="col-md-3 column "><input type="hidden" value='+item.gid+' class="id"><div class="gname">'+item.gname+'</div><img src="http://localhost:8080/resources/images/73858PICHZY.jpg" height="200px" /> <div class="cost"><div class="price">￥'+item.gprice+'</div><div class="exemption">包邮</div></div><div class="introduce" >'+item.gcontent+'</div><div class="shoppingCart"><span class="glyphicon glyphicon-shopping-cart shop"  title="加入购物车" onclick="addShopCar(this)"></span><a href="/jump/shopping"><span class="glyphicon glyphicon glyphicon-yen "  title="结算" style="float: right;"></span></a></div></div>';
+        })
+        $(".row").html(HTML);
+    }
+})
+}
+function addShopCar(obj){
+    var productList;
+    var count;
+    var box = $(obj).parent().parent();
+    var id = box.find(".id").val();
+
+    if(localStorage.getItem("list")){
+        productList = JSON.parse(localStorage.getItem("list")) ;
+        for(var i in productList){
+            if(productList[i].gid == id){
+                alert("您已经把该商品加入购物车了！不需要重复添加。");
+                return;
+            }
+        }
+    }else{
+        productList = {};
+    }
+    var name = box.find(".gname").html();
+    var price = box.find(".price").html();
+
+    if(localStorage.getItem("count")){
+        count = parseInt(localStorage.getItem("count")) ;
+    }else if(Object.keys(productList).length == 0){
+        count = 1;
+    }else{
+        count = 1;
+    }
+    var newobj={};
+    newobj["gid"] = id;
+    newobj["name"] = name;
+    newobj["gprice"] = price;
+    productList[count]=newobj;
+    count += 1;
+    localStorage.setItem("list",JSON.stringify(productList));
+    localStorage.setItem("count",count+"");
+    alert("加入购物车成功！")
+
+
+}

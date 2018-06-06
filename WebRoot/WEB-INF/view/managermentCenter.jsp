@@ -9,15 +9,16 @@
     <meta charset="UTF-8">
     <title>后台管理中心</title>
     <link rel="stylesheet" href="../resources/management.css" />
-
+    <script src="../resources/js/jquery.min.js"></script>
 </head>
 <body>
 <!--描述：管理中心顶部-->
 <div class="header">
     <div class="inner_c">
-        <h1 class="logo">
-            <img src="../images/logo1.png" />
-        </h1>
+        <div class="logo" style="width: 100px;height: 100%;font-size: 16px;">
+            <a class="cancel" href="http://localhost:8080">注销</a>
+        </div>
+
         <div class="nav">
             <ul>
                 <li class="current" onclick="changeGoods(this)">商品管理</li>
@@ -58,7 +59,7 @@
                         <td>商品编号</td>
                         <td>商品名称</td>
                         <td>商品分类</td>
-                        <td>生产厂家</td>
+                        <td>商品详情</td>
                         <td>商品价格</td>
                         <td>商品库存</td>
                         <td class="last3">操作</td>
@@ -67,12 +68,16 @@
 
                         <tr>
                             <td>${commodity.gid}</td>
-                            <td>${commodity.gname}</td>
-                            <td>${commodity.gtype}</td>
-                            <td>${commodity.gcontent}</td>
-                            <td>${commodity.gprice}</td>
-                            <td>${commodity.gnum}</td>
-                            <td class="last3"><span class="delete">删除</span></td>
+                            <td class="gname">${commodity.gname}</td>
+                            <td class="gtype">${commodity.gtype}</td>
+                            <td class="gcontent">${commodity.gcontent}</td>
+                            <td class="gprice">${commodity.gprice}</td>
+                            <td class="gnum">${commodity.gnum}</td>
+                            <td class="last3">
+                                <span class="update" onclick="update(this)">修改</span>
+                                <a href="/delete?gid=${commodity.gid}">
+                                <span class="delete">删除</span></a>
+                                </td>
                         </tr>
 
                     </c:forEach>
@@ -84,13 +89,42 @@
                     <div>尾页</div>
                 </div>
             </div>
+            <div class="curtain">
+                <div class="updateBox">
+                    <div class="goods" >
+                        <div>商品名称：</div>
+                        <input type="text" name="gname" id="gname"    placeholder="请输入商品名称"/>
+                    </div>
+                    <div class="goods" >
+                        <div>商品类型：</div>
+                        <input type="text" name="gtype" id="gtype"  placeholder="请输入商品类型"/>
+                    </div>
+                    <div class="goods" >
+                        <div>商品库存：</div>
+                        <input type="text" name="gnum" id="gnum"  placeholder="请输入商品库存"/>
+                    </div>
+                    <div class="goods" >
+                        <div>商品详情：</div>
+                        <input type="text" name="gcontent" id="gcontent" placeholder="请输入订单数量"/>
+                    </div>
+                    <div class="goods" >
+                        <div>商品价格：</div>
+                        <input type="text" name="gprice" id="gprice"  placeholder="请输入商品价格"/>
+                    </div>
+                    <div >
+                        <input type="submit" class="zhuce" id="changeProduct" onclick="changeNew()" value="修改" /></input>
+                    </div>
+                </div>
+
+            </div>
             <!--描述：商品列表-->
 
 
             <!--描述：商品录入-->
             <div class="goodsentrybox">
                 <div class="goodsentry">
-                    <form action="${pageContext.request.contextPath}/Goodsadd" method="post" enctype="multipart/form-data">
+                    <form action="${pageContext.request.contextPath}/Goodsadd" method="post" accept-charset="utf-8" onsubmit="document.charset='utf-8';"
+                     enctype="multipart/form-data">
                         <div class="goods">
                             <div>商品名称：</div>
                             <input type="text" name="gname" id="gname"  placeholder="请输入商品名称"/>
@@ -108,8 +142,8 @@
                             <input type="text" name="gprice" id="gprice"  placeholder="请输入商品价格"/>
                         </div>
                         <div class="goods">
-                            <div style="float: left;">商品详情：</div>
-                            <textarea name="gcontent" id="gcount" placeholder="请输入商品详情"></textarea>
+                            <div >商品详情：</div>
+                            <textarea name="gcontent" id="gcount" placeholder="请输入商品详情" style="display:table-cell;vertical-align: top;"></textarea>
                         </div>
                         <div class="goods">
                             <div style="position: absolute;">商品图片：</div>
@@ -147,38 +181,25 @@
     <div class="content_right">
         <div class="content_right_header">
             <div class="content_right_innerl">
-                <p>LetsGO购物系统后台管理</p>
+                <p>let's gou购物系统后台管理</p>
             </div>
             <div class="geqiang"></div>
             <div class="dingdanchakan">
-                <table cellpadding="0" cellspacing="0" border="1">
-                    <tr>
-                        <td>订单ID</td>
-                        <td>商品ID</td>
-                        <td>用户ID</td>
-                        <td>购买时间</td>
-                        <td>订单数量</td>
-                        <td>发货地址</td>
-                        <td>是否付款</td>
-                        <td class="td last3">订单删除</td>
-                    </tr>
 
-                    <c:forEach items="${Order}" var="item">
+                   <table cellpadding="0" cellspacing="0" border="1" class="orderInfo">
                         <tr>
-                            <td>${item.orderid}</td>
-                            <td>${item.gid}</td>
-                            <td>${item.userid}</td>
-                            <td>${item.odate}</td>
-                            <td>${item.onum}</td>
-                            <td>${item.oaddress}</td>
-                            <td>${item.opayment}</td>
-
-                            <td class="td last3"><span class="delete">删除</span></td>
+                            <td>订单ID</td>
+                            <td>用户姓名</td>
+                            <td>收货地址</td>
+                            <td>联系方式</td>
+                            <td>购买的商品</td>
+                            <td>总价</td>
+                            <td class="td last3">订单操作</td>
                         </tr>
-                    </c:forEach>
 
-                </table>
-
+                    </table>
+                <div class="orderTable">
+                </div>
                 <div class="btnGroup">
                     <div>首页</div>
                     <div>上一页</div>
@@ -189,44 +210,44 @@
             <!--描述：订单管理左边选择栏-->
 
             <!--描述：订单修改-->
-            <div class="dingdanxiugai">
-                <div class="goodsentry">
-                    <form action="#" method="post">
-                        <div class="goods" >
-                            <div>商品名称：</div>
-                            <input type="text" name="gname"    placeholder="请输入商品名称"/>
-                        </div>
-                        <div class="goods" >
-                            <div>商品类型：</div>
-                            <input type="text" name="gtype"   placeholder="请输入商品类型"/>
-                        </div>
-                        <div class="goods" >
-                            <div>商品编号：</div>
-                            <input type="text" name="gnum"   placeholder="请输入商品编号"/>
-                        </div>
-                        <div class="goods" >
-                            <div>生产厂家：</div>
-                            <input type="text" name="gprname"  placeholder="请输入商品生产厂家"/>
-                        </div>
-                        <div class="goods" >
-                            <div>商品价格：</div>
-                            <input type="text" name="gprice"   placeholder="请输入商品价格"/>
-                        </div>
-                        <div class="goods" >
-                            <div>商品库存：</div>
-                            <input type="text" name="gcount"   placeholder="请输入商品库存"/>
-                        </div>
-                        <div >
-                            <input type="submit" class="zhuce" /></input>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <!--描述：订单修改-->
-
-
+<div class="dingdanxiugai">
+<div class="goodsentry">
+    <form action="#" method="post"  >
+        <div class="goods" >
+            <div>订单&nbsp;ID：</div>
+            <input type="text" name="gname"    placeholder="请输入订单"/>
         </div>
-    </div>
+        <div class="goods" >
+            <div>用户姓名：</div>
+            <input type="text" name="gtype"   placeholder="请输入用户姓名"/>
+        </div>
+        <div class="goods" >
+            <div>收货地址：</div>
+            <input type="text" name="gnum"   placeholder="请输入收货地址"/>
+        </div>
+        <div class="goods" >
+            <div>联系方式：</div>
+            <input type="text" name="gprname"  placeholder="请输入联系方式"/>
+        </div>
+        <div class="goods" >
+            <div>购买商品：</div>
+            <input type="text" name="gprice"   placeholder="请输入购买时间"/>
+        </div>
+        <div class="goods" >
+            <div>总&emsp;&emsp;价：</div>
+            <input type="text" name="gcount"   placeholder="请输入农家"/>
+        </div>
+        <div >
+            <input type="submit" class="zhuce" /></input>
+        </div>
+    </form>
+</div>
+</div>
+<!--描述：订单修改-->
+
+
+</div>
+</div>
 </div>
 <!--描述：订单管理块-->
 
@@ -246,38 +267,39 @@
     <div class="content_right">
         <div class="content_right_header">
             <div class="content_right_innerl">
-                <p>LetsGO购物系统后台管理</p>
+                <p>let's gou购物系统后台管理</p>
             </div>
             <div class="geqiang"></div>
-            <div class="look">
-                <table cellpadding="0" cellspacing="0" border="1">
-                    <tr>
-                        <td>用户ID</td>
-                        <td>用户名称</td>
-                        <td>用户通讯</td>
-                        <td>用户地址</td>
-                        <td>用户性别</td>
-                        <td>用户密码</td>
-                        <td class="td last3">操作</td>
-                    </tr>
-                    <c:forEach items="${UserManager}" var="userManager" varStatus="i">
-                        <tr>
-                            <td>${userManager.uid}</td>
-                            <td>${userManager.uname}</td>
-                            <td>${userManager.uphone}</td>
-                            <td>${userManager.uaddress}</td>
-                            <td>${userManager.usex}</td>
-                            <td>${userManager.password}</td>
-                            <td class="td last3"><span class="delete">删除</span></td>
-                        </tr>
-                    </c:forEach>
-                </table>
-                <div class="btnGroup">
-                    <div>首页</div>
-                    <div>上一页</div>
-                    <div>下一页</div>
-                    <div>尾页</div>
-                </div>
+<div class="look">
+<table cellpadding="0" cellspacing="0" border="1">
+    <tr>
+        <td>用户ID</td>
+        <td>用户名称</td>
+        <td>联系方式</td>
+        <td>用户地址</td>
+        <td>用户性别</td>
+        <td>用户密码</td>
+        <td class="td last3">操作</td>
+    </tr>
+    <c:forEach items="${UserManager}" var="userManager" varStatus="i">
+        <tr>
+            <td>${userManager.uid}</td>
+            <td>${userManager.uname}</td>
+            <td>${userManager.uphone}</td>
+            <td>${userManager.uaddress}</td>
+            <td>${userManager.usex}</td>
+            <td>${userManager.password}</td>
+            <td class="td last3"><a href="/deleteUser?uid=${userManager.uid}">
+                <span class="delete">删除</span></a></td>
+        </tr>
+    </c:forEach>
+</table>
+<div class="btnGroup">
+    <div>首页</div>
+    <div>上一页</div>
+    <div>下一页</div>
+    <div>尾页</div>
+</div>
             </div>
             <!--描述：用户管理左边选择栏-->
 
