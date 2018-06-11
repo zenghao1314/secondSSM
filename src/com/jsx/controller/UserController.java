@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.jsx.common.ImageCode;
 import com.jsx.model.Goods;
 import com.jsx.service.GoodsService;
 import org.apache.log4j.Logger;
@@ -33,18 +34,19 @@ public class UserController {
     @RequestMapping(value = "/doLogin")
     //public String doLogin(HttpServletRequest request)
 	public String doLogin(User user,@RequestParam("uname") String uname, @RequestParam("password") String pwd,HttpSession session,
-						  HttpServletRequest request,Map<String,Object> map)
+                          @RequestParam("validateCode") String validateCode, HttpServletRequest request,Map<String,Object> map)
 	{
+        if(!ImageCode.validateCode(validateCode,session)){
+           return  "login";
+        }
 		boolean authorized = userService.isAuthorizedUser(uname, pwd);
         if(authorized)
           {
           	User findUser =userService.getUser(user);
           	List<Goods> findGoods=goodsService.getAll();
-          	request.setAttribute("Commodity",findGoods);
+//          	request.setAttribute("Commodity",findGoods);
+          	session.setAttribute("Commodity",findGoods);
           	session.setAttribute("user",findUser);
-        	// List<User> userList = userService.getAll();
-//        	map.put("userList", userList);
-//    		map.put("loginUser", uname);
             return "main";
         }
         else
@@ -92,7 +94,10 @@ public class UserController {
 		return "main";
 	}
 
-
+    @RequestMapping("/genValidCode")
+    public void genValidCode(HttpServletRequest request,HttpServletResponse response){
+        ImageCode.writeImageCode(request, response);
+    }
 
 	
 

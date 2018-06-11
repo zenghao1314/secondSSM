@@ -55,7 +55,8 @@
 
                 </div>
 
-
+                <li><label>验证码：</label><span><input id="validcodetext" name="validateCode" autocomplete="off" type="text" class="validcodetext" placeholder="请输入验证码"/>&nbsp
+                    <img id="validimg" src="${pageContext.request.contextPath}/genValidCode?id="+Math.random() href="javascript:void(0)"/></span></li>
 
 
                 <div class="btn-regist">
@@ -76,6 +77,24 @@
 <script src="../resources/assets/bootstrap/js/bootstrap.min.js"></script>
 <script src="../resources/assets/js/newfile.js"></script>
 <script src="../resources/assets/js/scripts.js"></script>
+<script >
+    $(function() {
+        login.init();
+    });
+    var login = {
+        init:function(){
+            $("#validimg").click(function() {
+                login.reLoadValidateCode();
+            });
+
+        },
+        reLoadValidateCode:function(){
+            $('#validimg').attr('src',"${pageContext.request.contextPath}/genValidCode?id=" + Math.random());
+        },
+
+    };
+
+</script>
 
 </body>
 

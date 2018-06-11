@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -53,119 +54,120 @@
             <!--首页的商品界面-->
             <p class="title">全部商品</p>
             <!--第一行商品只需要一行-->
+            <c:forEach items="${Commodity}" var="commodity" varStatus="i">
             <div class="row">
-
                 <div class="col-md-3 column ">
                     <input type="hidden" value="51" class="id">
-                    <div class="gname">康师傅方便面</div>
+                    <div class="gname">${commodity.gname}</div>
                     <img src="http://localhost:8080/resources/images/fangbianmian.jpg" height="200px">
+                    <%--<img src="${commodity.gimage}" height="200px">--%>
                     <div class="cost">
-                        <div class="price">￥5</div>
+                        <div class="price">${commodity.gprice}</div>
                         <div class="exemption">包邮</div>
                     </div>
-                    <div class="introduce">康师傅方便面通宵熬夜必备之选</div>
+                    <div class="introduce">${commodity.gcontent}</div>
                     <div class="shoppingCart"><span class="glyphicon glyphicon-shopping-cart shop" title="加入购物车" onclick="addShopCar(this)"></span>
                         <a href="/jump/shopping"><span class="glyphicon glyphicon glyphicon-yen " title="结算" style="float: right;"></span></a>
                     </div>
                 </div>
+                </c:forEach>
+                <%--<div class="col-md-3 column ">--%>
+                    <%--<input type="hidden" value="52" class="id">--%>
+                    <%--<div class="gname">农夫山泉 </div>--%>
+                    <%--<img src="http://localhost:8080/resources/images/nongfushanquan.jpg" height="200px">--%>
+                    <%--<div class="cost">--%>
+                        <%--<div class="price">￥2</div>--%>
+                        <%--<div class="exemption">包邮</div>--%>
+                    <%--</div>--%>
+                    <%--<div class="introduce">农夫山泉 饮用天然水 550ml</div>--%>
+                    <%--<div class="shoppingCart"><span class="glyphicon glyphicon-shopping-cart shop" title="加入购物车" onclick="addShopCar(this)"></span>--%>
+                        <%--<a href="/jump/shopping"><span class="glyphicon glyphicon glyphicon-yen " title="结算" style="float: right;"></span></a>--%>
+                    <%--</div>--%>
+                <%--</div>--%>
 
-                <div class="col-md-3 column ">
-                    <input type="hidden" value="52" class="id">
-                    <div class="gname">农夫山泉 </div>
-                    <img src="http://localhost:8080/resources/images/nongfushanquan.jpg" height="200px">
-                    <div class="cost">
-                        <div class="price">￥2</div>
-                        <div class="exemption">包邮</div>
-                    </div>
-                    <div class="introduce">农夫山泉 饮用天然水 550ml</div>
-                    <div class="shoppingCart"><span class="glyphicon glyphicon-shopping-cart shop" title="加入购物车" onclick="addShopCar(this)"></span>
-                        <a href="/jump/shopping"><span class="glyphicon glyphicon glyphicon-yen " title="结算" style="float: right;"></span></a>
-                    </div>
-                </div>
+                <%--<div class="col-md-3 column ">--%>
+                    <%--<input type="hidden" value="53" class="id">--%>
+                    <%--<div class="gname">合川桃片</div>--%>
+                    <%--<img src="http://localhost:8080/resources/images/hechuantaopian.jpg" height="200px">--%>
+                    <%--<div class="cost">--%>
+                        <%--<div class="price">￥5</div>--%>
+                        <%--<div class="exemption">包邮</div>--%>
+                    <%--</div>--%>
+                    <%--<div class="introduce">芝麻官重庆特产合川桃片手工糕点传统小吃云片糕散装零食</div>--%>
+                    <%--<div class="shoppingCart"><span class="glyphicon glyphicon-shopping-cart shop" title="加入购物车" onclick="addShopCar(this)"></span>--%>
+                        <%--<a href="/jump/shopping"><span class="glyphicon glyphicon glyphicon-yen " title="结算" style="float: right;"></span></a>--%>
+                    <%--</div>--%>
+                <%--</div>--%>
 
-                <div class="col-md-3 column ">
-                    <input type="hidden" value="53" class="id">
-                    <div class="gname">合川桃片</div>
-                    <img src="http://localhost:8080/resources/images/hechuantaopian.jpg" height="200px">
-                    <div class="cost">
-                        <div class="price">￥5</div>
-                        <div class="exemption">包邮</div>
-                    </div>
-                    <div class="introduce">芝麻官重庆特产合川桃片手工糕点传统小吃云片糕散装零食</div>
-                    <div class="shoppingCart"><span class="glyphicon glyphicon-shopping-cart shop" title="加入购物车" onclick="addShopCar(this)"></span>
-                        <a href="/jump/shopping"><span class="glyphicon glyphicon glyphicon-yen " title="结算" style="float: right;"></span></a>
-                    </div>
-                </div>
+                <%--<div class="col-md-3 column ">--%>
+                    <%--<input type="hidden" value="54" class="id">--%>
+                    <%--<div class="gname">雪碧</div>--%>
+                    <%--<img src="http://localhost:8080/resources/images/xuebi.jpg" height="200px">--%>
+                    <%--<div class="cost">--%>
+                        <%--<div class="price">￥5</div>--%>
+                        <%--<div class="exemption">包邮</div>--%>
+                    <%--</div>--%>
+                    <%--<div class="introduce">雪碧500ml 清爽碳酸饮料品汽水Coca-Cola</div>--%>
+                    <%--<div class="shoppingCart"><span class="glyphicon glyphicon-shopping-cart shop" title="加入购物车" onclick="addShopCar(this)"></span>--%>
+                        <%--<a href="/jump/shopping"><span class="glyphicon glyphicon glyphicon-yen " title="结算" style="float: right;"></span></a>--%>
+                    <%--</div>--%>
+                <%--</div>--%>
 
-                <div class="col-md-3 column ">
-                    <input type="hidden" value="54" class="id">
-                    <div class="gname">雪碧</div>
-                    <img src="http://localhost:8080/resources/images/xuebi.jpg" height="200px">
-                    <div class="cost">
-                        <div class="price">￥5</div>
-                        <div class="exemption">包邮</div>
-                    </div>
-                    <div class="introduce">雪碧500ml 清爽碳酸饮料品汽水Coca-Cola</div>
-                    <div class="shoppingCart"><span class="glyphicon glyphicon-shopping-cart shop" title="加入购物车" onclick="addShopCar(this)"></span>
-                        <a href="/jump/shopping"><span class="glyphicon glyphicon glyphicon-yen " title="结算" style="float: right;"></span></a>
-                    </div>
-                </div>
+                <%--<div class="col-md-3 column ">--%>
+                    <%--<input type="hidden" value="55" class="id">--%>
+                    <%--<div class="gname">泡椒凤爪</div>--%>
+                    <%--<img src="http://localhost:8080/resources/images/paojiaofengzhua.jpg" height="200px">--%>
+                    <%--<div class="cost">--%>
+                        <%--<div class="price">￥5</div>--%>
+                        <%--<div class="exemption">包邮</div>--%>
+                    <%--</div>--%>
+                    <%--<div class="introduce">有友泡椒凤爪山椒味480g袋重庆特产零食辣味鸡爪小吃麻辣休闲零食</div>--%>
+                    <%--<div class="shoppingCart"><span class="glyphicon glyphicon-shopping-cart shop" title="加入购物车" onclick="addShopCar(this)"></span>--%>
+                        <%--<a href="/jump/shopping"><span class="glyphicon glyphicon glyphicon-yen " title="结算" style="float: right;"></span></a>--%>
+                    <%--</div>--%>
+                <%--</div>--%>
 
-                <div class="col-md-3 column ">
-                    <input type="hidden" value="55" class="id">
-                    <div class="gname">泡椒凤爪</div>
-                    <img src="http://localhost:8080/resources/images/paojiaofengzhua.jpg" height="200px">
-                    <div class="cost">
-                        <div class="price">￥5</div>
-                        <div class="exemption">包邮</div>
-                    </div>
-                    <div class="introduce">有友泡椒凤爪山椒味480g袋重庆特产零食辣味鸡爪小吃麻辣休闲零食</div>
-                    <div class="shoppingCart"><span class="glyphicon glyphicon-shopping-cart shop" title="加入购物车" onclick="addShopCar(this)"></span>
-                        <a href="/jump/shopping"><span class="glyphicon glyphicon glyphicon-yen " title="结算" style="float: right;"></span></a>
-                    </div>
-                </div>
+                <%--<div class="col-md-3 column ">--%>
+                    <%--<input type="hidden" value="56" class="id">--%>
+                    <%--<div class="gname">无核韩话梅</div>--%>
+                    <%--<img src="http://localhost:8080/resources/images/huamei.jpg" height="200px">--%>
+                    <%--<div class="cost">--%>
+                        <%--<div class="price">￥5</div>--%>
+                        <%--<div class="exemption">包邮</div>--%>
+                    <%--</div>--%>
+                    <%--<div class="introduce">俏话梅蜜饯果干孕妇休闲零食果脯</div>--%>
+                    <%--<div class="shoppingCart"><span class="glyphicon glyphicon-shopping-cart shop" title="加入购物车" onclick="addShopCar(this)"></span>--%>
+                        <%--<a href="/jump/shopping"><span class="glyphicon glyphicon glyphicon-yen " title="结算" style="float: right;"></span></a>--%>
+                    <%--</div>--%>
+                <%--</div>--%>
 
-                <div class="col-md-3 column ">
-                    <input type="hidden" value="56" class="id">
-                    <div class="gname">无核韩话梅</div>
-                    <img src="http://localhost:8080/resources/images/huamei.jpg" height="200px">
-                    <div class="cost">
-                        <div class="price">￥5</div>
-                        <div class="exemption">包邮</div>
-                    </div>
-                    <div class="introduce">俏话梅蜜饯果干孕妇休闲零食果脯</div>
-                    <div class="shoppingCart"><span class="glyphicon glyphicon-shopping-cart shop" title="加入购物车" onclick="addShopCar(this)"></span>
-                        <a href="/jump/shopping"><span class="glyphicon glyphicon glyphicon-yen " title="结算" style="float: right;"></span></a>
-                    </div>
-                </div>
+                <%--<div class="col-md-3 column ">--%>
+                    <%--<input type="hidden" value="57" class="id">--%>
+                    <%--<div class="gname">亲嘴烧</div>--%>
+                    <%--<img src="http://localhost:8080/resources/images/qinzuishao.jpg" height="200px">--%>
+                    <%--<div class="cost">--%>
+                        <%--<div class="price">￥5</div>--%>
+                        <%--<div class="exemption">包邮</div>--%>
+                    <%--</div>--%>
+                    <%--<div class="introduce">亲嘴烧300g辣条亲嘴片豆干大刀肉麻辣零食小吃</div>--%>
+                    <%--<div class="shoppingCart"><span class="glyphicon glyphicon-shopping-cart shop" title="加入购物车" onclick="addShopCar(this)"></span>--%>
+                        <%--<a href="/jump/shopping"><span class="glyphicon glyphicon glyphicon-yen " title="结算" style="float: right;"></span></a>--%>
+                    <%--</div>--%>
+                <%--</div>--%>
 
-                <div class="col-md-3 column ">
-                    <input type="hidden" value="57" class="id">
-                    <div class="gname">亲嘴烧</div>
-                    <img src="http://localhost:8080/resources/images/qinzuishao.jpg" height="200px">
-                    <div class="cost">
-                        <div class="price">￥5</div>
-                        <div class="exemption">包邮</div>
-                    </div>
-                    <div class="introduce">亲嘴烧300g辣条亲嘴片豆干大刀肉麻辣零食小吃</div>
-                    <div class="shoppingCart"><span class="glyphicon glyphicon-shopping-cart shop" title="加入购物车" onclick="addShopCar(this)"></span>
-                        <a href="/jump/shopping"><span class="glyphicon glyphicon glyphicon-yen " title="结算" style="float: right;"></span></a>
-                    </div>
-                </div>
-
-                <div class="col-md-3 column ">
-                    <input type="hidden" value="103" class="id">
-                    <div class="gname">大面筋辣条</div>
-                    <img src="http://localhost:8080/resources/images/latiao1.jpg" height="200px">
-                    <div class="cost">
-                        <div class="price">￥5</div>
-                        <div class="exemption">包邮</div>
-                    </div>
-                    <div class="introduce">大面筋106g 卫龙辣条零食麻辣辣片小吃特产</div>
-                    <div class="shoppingCart"><span class="glyphicon glyphicon-shopping-cart shop" title="加入购物车" onclick="addShopCar(this)"></span>
-                        <a href="/jump/shopping"><span class="glyphicon glyphicon glyphicon-yen " title="结算" style="float: right;"></span></a>
-                    </div>
-                </div>
+                <%--<div class="col-md-3 column ">--%>
+                    <%--<input type="hidden" value="103" class="id">--%>
+                    <%--<div class="gname">大面筋辣条</div>--%>
+                    <%--<img src="http://localhost:8080/resources/images/latiao1.jpg" height="200px">--%>
+                    <%--<div class="cost">--%>
+                        <%--<div class="price">￥5</div>--%>
+                        <%--<div class="exemption">包邮</div>--%>
+                    <%--</div>--%>
+                    <%--<div class="introduce">大面筋106g 卫龙辣条零食麻辣辣片小吃特产</div>--%>
+                    <%--<div class="shoppingCart"><span class="glyphicon glyphicon-shopping-cart shop" title="加入购物车" onclick="addShopCar(this)"></span>--%>
+                        <%--<a href="/jump/shopping"><span class="glyphicon glyphicon glyphicon-yen " title="结算" style="float: right;"></span></a>--%>
+                    <%--</div>--%>
+                <%--</div>--%>
 
 
 
