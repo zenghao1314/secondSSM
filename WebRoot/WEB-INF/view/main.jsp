@@ -59,8 +59,8 @@
                 <div class="col-md-3 column ">
                     <input type="hidden" value="51" class="id">
                     <div class="gname">${commodity.gname}</div>
-                    <img src="http://localhost:8080/resources/images/fangbianmian.jpg" height="200px">
-                    <%--<img src="${commodity.gimage}" height="200px">--%>
+                    <%--<img src="http://localhost:8080/resources/images/fangbianmian.jpg" height="200px">--%>
+                    <img src="http://localhost:8080/resources/images/${commodity.gimage}" height="200px">
                     <div class="cost">
                         <div class="price">${commodity.gprice}</div>
                         <div class="exemption">包邮</div>

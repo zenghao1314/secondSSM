@@ -65,9 +65,10 @@ public class ManagerController {
     @RequestMapping(value = "/Goodsadd", method = RequestMethod.POST)
     public String add(Goods goods, HttpServletRequest request, HttpSession session,
                       HttpServletResponse response)throws IllegalStateException, IOException {
-        String pathRoot = request.getSession().getServletContext()
-                .getRealPath("");
-        String path = "";
+//        String pathRoot = request.getSession().getServletContext()
+//                .getRealPath("");
+
+        String path ="E:/secondSSM/WebRoot/WEB-INF/resources/images";
 
         // 将当前上下文初始化给 CommonsMutipartResolver （多部分解析器）
         CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver(
@@ -75,17 +76,16 @@ public class ManagerController {
 
         // 检查form中是否有enctype="multipart/form-data"
         if (multipartResolver.isMultipart(request)) {
-
             // 将request变成多部分request
             MultipartHttpServletRequest multiRequest = (MultipartHttpServletRequest) request;
-
             // 获取multiRequest 中所有的文件名
             MultipartFile file = multiRequest.getFile("file");
             String fileName = file.getOriginalFilename();
             // 目录创建
-            File f = new File(pathRoot + "/head");
+            File f = new File(path);
             if (!f.exists()) {
                 f.mkdirs();
+                f.createNewFile();
             }
             if (fileName != "") {
                 // 获得文件后缀名称
@@ -94,8 +94,9 @@ public class ManagerController {
                 SimpleDateFormat sdf = new SimpleDateFormat(
                         "yyyy-MM-dd-HH-mm-ss");
                 String date = sdf.format(new Date());
-                path = "/head/" + date + "." + fileName;
-                FileOutputStream fos = new FileOutputStream(pathRoot + path);
+
+                path= date+fileName;
+                FileOutputStream fos = new FileOutputStream(new File(f,path));
                 fos.write(file.getBytes());
                 fos.flush();
                 fos.close();
