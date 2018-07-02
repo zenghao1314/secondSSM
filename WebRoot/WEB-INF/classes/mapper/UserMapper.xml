@@ -45,4 +45,14 @@
 		DELETE FROM letgo_user
 		WHERE uid=#{uid}
 	</delete>
+
+	<!-- mysql 的分页查询语句-->
+	<select id="queryCount" resultType="int">
+		SELECT count(*)
+		FROM  letgo_user
+	</select>
+	<!-- mysql 的分页查询语句-->
+	<select id="queryAll" resultType="com.jsx.model.User"   parameterType="int">
+		SELECT * FROM letgo_user LIMIT #{firstIndex},#{pageSize}
+	</select>
 </mapper>

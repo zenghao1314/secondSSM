@@ -1,5 +1,6 @@
 package com.jsx.service;
 
+import com.jsx.common.Page;
 import com.jsx.model.Goods;
 import com.jsx.model.User;
 
@@ -11,4 +12,6 @@ public interface GoodsService {
     public int update(Goods goods);
     Goods getGoods(Goods goods);
     int add(Goods goods);
+
+    Page<Goods> getAllComponent(Page<Goods> page);
 }

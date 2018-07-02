@@ -1,5 +1,6 @@
 package com.jsx.controller;
 
+import com.jsx.common.Page;
 import com.jsx.model.Goods;
 import com.jsx.model.Order;
 import com.jsx.model.User;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -34,15 +36,15 @@ public class ManagerController {
     private OrderSerice orderSerice;
 
     @RequestMapping(value = "/ManagerLogin")
-    public String doLogin(User user, @RequestParam("uname") String uname, @RequestParam("password") String pwd, HttpServletRequest request, Map<String,Object> map)
+    public String doLogin(User user, @RequestParam("uname") String uname, @RequestParam("password") String pwd, HttpServletRequest request, Map<String,Object> map, Page<Goods> page)
     {
         if ("zzh".equals(uname)&&"123".equals(pwd)){
             List<User> userList = userService.getAll();
-            List<Goods> goodsList=goodsService.getAll();
+            Page<Goods> page1=goodsService.getAllComponent(page);
             List<Order> orderList= orderSerice.getAll();
             request.setAttribute("Order",orderList);
-            request.setAttribute("Commodity",goodsList);
-           request.setAttribute("UserManager",userList);
+            request.setAttribute("page",page1);
+            request.setAttribute("UserManager",userList);
             return "managermentCenter";
         }else {
             return "Manager";
@@ -122,5 +124,27 @@ public class ManagerController {
         List<Goods> findGoods=goodsService.getAll();
         return findGoods;
 
+    }
+
+    //后台商品页面分页
+    @RequestMapping("getAllComponent")
+    public ModelAndView getAllComponent(Page<Goods> page){
+        ModelAndView view=new ModelAndView();
+        List<User> userList = userService.getAll();
+        page = goodsService.getAllComponent(page);
+        view.addObject("page",page);
+        view.addObject("UserManager",userList);
+        view.setViewName("managermentCenter");
+        return view;
+    }
+
+    //后台用户页面分页
+    @RequestMapping("getAllUser")
+    public ModelAndView getAllUser(Page<User> pageuser){
+        ModelAndView view=new ModelAndView();
+        pageuser = userService.getAllComponent(pageuser);
+        view.addObject("pageuser",pageuser);
+        view.setViewName("managermentCenter");
+        return view;
     }
 }

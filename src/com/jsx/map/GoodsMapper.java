@@ -1,5 +1,6 @@
 package com.jsx.map;
 
+import com.jsx.common.Page;
 import com.jsx.model.Goods;
 import com.jsx.model.User;
 
@@ -12,4 +13,7 @@ public interface GoodsMapper {
     public int add(Goods goods);
     Goods getGoods(Goods goods);
    int update(Goods goods);
+
+    public List<Goods> queryAll(Page<Goods> page);
+    public int queryCount();
 }

@@ -126,7 +126,7 @@ public class ImageCode {
             return false;
         }
         randCode = randCode.toLowerCase();
-//		session.removeAttribute(IMAGE_CODE);
+		session.removeAttribute(IMAGE_CODE);
         return (randCode != null && randCode.equals(validateCode)) ? true : false;
         // return true;
     }

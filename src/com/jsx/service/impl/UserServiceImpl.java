@@ -2,6 +2,7 @@ package com.jsx.service.impl;
 
 import java.util.List;
 
+import com.jsx.common.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -45,6 +46,9 @@ public class UserServiceImpl implements UserService{
 	        }
 	        return false;
 	}
+
+
+
 	@Override
 	public List<User> getUserListByCondition(User user) {
 		return userMapper.getUserListByCondition(user);
@@ -52,5 +56,15 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public  User getUser(User user){
 		return  userMapper.getUser(user);
+	}
+
+	//分页
+	@Override
+	public Page<User> getAllComponent(Page<User> page) {
+		List<User> list = userMapper.queryAll(page);
+		int queryCount = userMapper.queryCount();
+		page.setTotalDataCount(queryCount);
+		page.setList(list);
+		return page;
 	}
 }

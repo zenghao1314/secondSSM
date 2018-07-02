@@ -15,4 +15,14 @@
 		SELECT *
 		FROM  let_good
 	</select>
+
+	<!-- mysql 的分页查询语句-->
+	<select id="queryCount" resultType="int">
+		SELECT count(*)
+		FROM  let_good
+	</select>
+	<!-- mysql 的分页查询语句-->
+	<select id="queryAll" resultType="com.jsx.model.Goods"   parameterType="int">
+      SELECT * FROM let_good LIMIT #{firstIndex},#{pageSize}
+	</select>
 </mapper>

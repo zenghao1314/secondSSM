@@ -2,6 +2,7 @@ package com.jsx.service;
 
 import java.util.List;
 
+import com.jsx.common.Page;
 import com.jsx.model.User;
 
 public interface UserService {
@@ -22,4 +23,6 @@ public interface UserService {
 	     * @return
 	     */
 	    public boolean isAuthorizedUser(String userName, String pwd);
+
+	Page<User> getAllComponent(Page<User> page);
 }

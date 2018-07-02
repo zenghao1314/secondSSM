@@ -2,6 +2,7 @@ package com.jsx.map;
 
 import java.util.List;
 
+import com.jsx.common.Page;
 import com.jsx.model.User;
 
 public interface UserMapper {
@@ -13,4 +14,7 @@ public interface UserMapper {
     public int isAuthorizedUser(User user);
     List<User> getUserListByCondition(User user);
     User getUser(User user);
+
+    public List<User> queryAll(Page<User> page);
+    public int queryCount();
     }

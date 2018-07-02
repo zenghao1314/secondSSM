@@ -1,5 +1,6 @@
 package com.jsx.service.impl;
 
+import com.jsx.common.Page;
 import com.jsx.map.GoodsMapper;
 import com.jsx.model.Goods;
 import com.jsx.service.GoodsService;
@@ -36,4 +37,15 @@ public class GoodsServiceImpl implements GoodsService {
     public int add(Goods goods) {
         return  goodsMapper.add(goods);
     }
+
+    @Override
+    public Page<Goods> getAllComponent(Page<Goods> page) {
+        List<Goods> list = goodsMapper.queryAll(page);
+        int queryCount = goodsMapper.queryCount();
+        page.setTotalDataCount(queryCount);
+        page.setList(list);
+        return page;
+    }
+
+
 }

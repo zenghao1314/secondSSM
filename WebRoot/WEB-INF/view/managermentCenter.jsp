@@ -56,6 +56,7 @@
             <div class="goodsList">
                 <table  cellpadding="0" cellspacing="0" border="1">
                     <tr>
+                        <td>序列编号</td>
                         <td>商品编号</td>
                         <td>商品名称</td>
                         <td>商品分类</td>
@@ -64,29 +65,72 @@
                         <td>商品库存</td>
                         <td class="last3">操作</td>
                     </tr>
-                    <c:forEach items="${Commodity}" var="commodity" varStatus="i">
+                    <c:forEach items="${page.list}" var="c" varStatus="index">
 
                         <tr>
-                            <td>${commodity.gid}</td>
-                            <td class="gname">${commodity.gname}</td>
-                            <td class="gtype">${commodity.gtype}</td>
-                            <td class="gcontent">${commodity.gcontent}</td>
-                            <td class="gprice">${commodity.gprice}</td>
-                            <td class="gnum">${commodity.gnum}</td>
+                            <td>${page.firstIndex+index.index+1}</td>
+                            <td>${c.gid}</td>
+                            <td class="gname">${c.gname}</td>
+                            <td class="gtype">${c.gtype}</td>
+                            <td class="gcontent">${c.gcontent}</td>
+                            <td class="gprice">${c.gprice}</td>
+                            <td class="gnum">${c.gnum}</td>
                             <td class="last3">
                                 <span class="update" onclick="update(this)">修改</span>
-                                <a href="/delete?gid=${commodity.gid}">
+                                <a href="/delete?gid=${c.gid}">
                                 <span class="delete">删除</span></a>
                                 </td>
                         </tr>
-
                     </c:forEach>
                 </table>
                 <div class="btnGroup">
-                    <div>首页</div>
-                    <div>上一页</div>
-                    <div>下一页</div>
-                    <div>尾页</div>
+                    第${page.pageCount}/${page.totalPageCount}页
+                    <c:if test="${page.pageCount eq 1}">
+                        首页&nbsp;&nbsp;上一页
+                    </c:if>
+                    <c:if test="${page.pageCount > 1}">
+                        <a href="${pageContext.request.contextPath}/getAllComponent?pageCount=1">首页</a>
+                        &nbsp;&nbsp;
+                        <a href="${pageContext.request.contextPath}/getAllComponent?pageCount=${page.pageCount-1}">上一页</a>
+                    </c:if>
+                    <c:if test="${page.totalPageCount<5}">
+                        <c:forEach begin="1" end="${page.totalPageCount}" varStatus="index">
+                            <a id="${index.index }" href="${pageContext.request.contextPath}/getAllComponent?pageCount=${index.index}"><font>${index.index}</font></a>
+                        </c:forEach>
+                    </c:if>
+                    <c:if test="${page.totalPageCount>5}">
+                        <c:if test="${page.pageCount<=3}">
+                            <c:forEach begin="1" end="5" varStatus="index">
+                                <a id="${index.index }" href="${pageContext.request.contextPath}/getAllComponent?pageCount=${index.index}"><font>${index.index}</font></a>
+                            </c:forEach>
+                        </c:if>
+                    </c:if>
+                    <c:if test="${page.totalPageCount>5}">
+                        <c:if test="${page.pageCount>=4&&page.pageCount<=page.totalPageCount-2}">
+                            <c:forEach begin="${page.pageCount-2}" end="${page.pageCount+2}" varStatus="index">
+                                <a id="${index.index }" href="${pageContext.request.contextPath}/getAllComponent?pageCount=${index.index}"><font>${index.index}</font></a>
+                            </c:forEach>
+                        </c:if>
+                    </c:if>
+                    <c:if test="${page.totalPageCount>5}">
+                        <c:if test="${page.pageCount>(page.totalPageCount-2)}">
+                            <c:forEach begin="${page.totalPageCount-4}" end="${page.totalPageCount}" varStatus="index">
+                                <a id="${index.index }" href="${pageContext.request.contextPath}/getAllComponent?pageCount=${index.index}"><font>${index.index}</font></a>
+                            </c:forEach>
+                        </c:if>
+                    </c:if>
+                    <c:if test="${page.pageCount eq page.totalPageCount}">
+                        下一页&nbsp;&nbsp;尾页
+                    </c:if>
+                    <c:if test="${page.pageCount < page.totalPageCount}">
+                        <a href="${pageContext.request.contextPath}/getAllComponent?pageCount=${page.pageCount+1}">下一页</a>
+                        &nbsp;&nbsp;
+                        <a href="${pageContext.request.contextPath}/getAllComponent?pageCount=${page.totalPageCount}">尾页</a>
+                    </c:if>
+                    <%--<div>首页</div>--%>
+                    <%--<div>上一页</div>--%>
+                    <%--<div>下一页</div>--%>
+                    <%--<div>尾页</div>--%>
                 </div>
             </div>
             <div class="curtain">
@@ -273,6 +317,7 @@
 <div class="look">
 <table cellpadding="0" cellspacing="0" border="1">
     <tr>
+        <td>序列编号</td>
         <td>用户ID</td>
         <td>用户名称</td>
         <td>联系方式</td>
@@ -283,6 +328,7 @@
     </tr>
     <c:forEach items="${UserManager}" var="userManager" varStatus="i">
         <tr>
+            <td>${1}</td>
             <td>${userManager.uid}</td>
             <td>${userManager.uname}</td>
             <td>${userManager.uphone}</td>
@@ -295,6 +341,49 @@
     </c:forEach>
 </table>
 <div class="btnGroup">
+    <%--第${page.pageCount}/${page.totalPageCount}页--%>
+    <%--<c:if test="${page.pageCount eq 1}">--%>
+        <%--首页&nbsp;&nbsp;上一页--%>
+    <%--</c:if>--%>
+    <%--<c:if test="${page.pageCount > 1}">--%>
+        <%--<a href="${pageContext.request.contextPath}/getAllComponent?pageCount=1">首页</a>--%>
+        <%--&nbsp;&nbsp;--%>
+        <%--<a href="${pageContext.request.contextPath}/getAllComponent?pageCount=${page.pageCount-1}">上一页</a>--%>
+    <%--</c:if>--%>
+    <%--<c:if test="${page.totalPageCount<5}">--%>
+        <%--<c:forEach begin="1" end="${page.totalPageCount}" varStatus="index">--%>
+            <%--<a id="${index.index }" href="${pageContext.request.contextPath}/getAllComponent?pageCount=${index.index}"><font>${index.index}</font></a>--%>
+        <%--</c:forEach>--%>
+    <%--</c:if>--%>
+    <%--<c:if test="${page.totalPageCount>5}">--%>
+        <%--<c:if test="${page.pageCount<=3}">--%>
+            <%--<c:forEach begin="1" end="5" varStatus="index">--%>
+                <%--<a id="${index.index }" href="${pageContext.request.contextPath}/getAllComponent?pageCount=${index.index}"><font>${index.index}</font></a>--%>
+            <%--</c:forEach>--%>
+        <%--</c:if>--%>
+    <%--</c:if>--%>
+    <%--<c:if test="${page.totalPageCount>5}">--%>
+        <%--<c:if test="${page.pageCount>=4&&page.pageCount<=page.totalPageCount-2}">--%>
+            <%--<c:forEach begin="${page.pageCount-2}" end="${page.pageCount+2}" varStatus="index">--%>
+                <%--<a id="${index.index }" href="${pageContext.request.contextPath}/getAllComponent?pageCount=${index.index}"><font>${index.index}</font></a>--%>
+            <%--</c:forEach>--%>
+        <%--</c:if>--%>
+    <%--</c:if>--%>
+    <%--<c:if test="${page.totalPageCount>5}">--%>
+        <%--<c:if test="${page.pageCount>(page.totalPageCount-2)}">--%>
+            <%--<c:forEach begin="${page.totalPageCount-4}" end="${page.totalPageCount}" varStatus="index">--%>
+                <%--<a id="${index.index }" href="${pageContext.request.contextPath}/getAllComponent?pageCount=${index.index}"><font>${index.index}</font></a>--%>
+            <%--</c:forEach>--%>
+        <%--</c:if>--%>
+    <%--</c:if>--%>
+    <%--<c:if test="${page.pageCount eq page.totalPageCount}">--%>
+        <%--下一页&nbsp;&nbsp;尾页--%>
+    <%--</c:if>--%>
+    <%--<c:if test="${page.pageCount < page.totalPageCount}">--%>
+        <%--<a href="${pageContext.request.contextPath}/getAllComponent?pageCount=${page.pageCount+1}">下一页</a>--%>
+        <%--&nbsp;&nbsp;--%>
+        <%--<a href="${pageContext.request.contextPath}/getAllComponent?pageCount=${page.totalPageCount}">尾页</a>--%>
+    <%--</c:if>--%>
     <div>首页</div>
     <div>上一页</div>
     <div>下一页</div>

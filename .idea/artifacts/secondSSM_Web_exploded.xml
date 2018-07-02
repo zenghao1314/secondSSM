@@ -1,7 +1,8 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="secondSSM:war exploded">
-    <output-path>$PROJECT_DIR$/out/artifacts/secondSSM_war_exploded</output-path>
+  <artifact type="exploded-war" name="secondSSM:Web exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/secondSSM_Web_exploded</output-path>
     <root id="root">
+      <element id="javaee-facet-resources" facet="secondSSM/web/Web" />
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="secondSSM" />
@@ -10,7 +11,6 @@
           <element id="library" level="project" name="lib" />
         </element>
       </element>
-      <element id="javaee-facet-resources" facet="secondSSM/web/Web" />
     </root>
   </artifact>
 </component>

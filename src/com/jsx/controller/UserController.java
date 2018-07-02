@@ -26,7 +26,7 @@ import com.jsx.service.UserService;
 
 @Controller
 public class UserController {
-	private static final Logger log = Logger.getLogger(UserController.class);  
+	private static final Logger log = Logger.getLogger(UserController.class);
 	@Autowired
 	private UserService userService;
 	@Autowired
@@ -44,7 +44,6 @@ public class UserController {
           {
           	User findUser =userService.getUser(user);
           	List<Goods> findGoods=goodsService.getAll();
-//          	request.setAttribute("Commodity",findGoods);
           	session.setAttribute("Commodity",findGoods);
           	session.setAttribute("user",findUser);
             return "main";

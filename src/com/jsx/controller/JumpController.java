@@ -35,4 +35,8 @@ public class JumpController {
     public String doManagerLogin(){
         return "Manager";
     }
+    @RequestMapping("/SeachGoods")
+    public String doSeachGoods(){
+        return "SeachGoods";
+    }
 }
